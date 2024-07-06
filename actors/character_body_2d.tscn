@@ -1,0 +1,151 @@
+[gd_scene load_steps=21 format=3 uid="uid://ly1joicxakhf"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_5jkab"]
+[ext_resource type="Texture2D" uid="uid://b3xh33ydpoqqn" path="res://assets/Sprite Pack 2/4 - Tommy/Running (32 x 32).png" id="2_8wbco"]
+[ext_resource type="Texture2D" uid="uid://5ah434vgo6cf" path="res://assets/Sprite Pack 2/4 - Tommy/Idle_Poses (32 x 32).png" id="2_j1m5f"]
+[ext_resource type="Texture2D" uid="uid://bnsltjvaaodmc" path="res://assets/Sprite Pack 2/4 - Tommy/Jumping (32 x 32).png" id="2_lkvo2"]
+[ext_resource type="Texture2D" uid="uid://w8fqai5gxvsc" path="res://assets/Sprite Pack 2/4 - Tommy/WhatsApp_Image_2024-07-04_at_22.02.11-removebg-preview.png" id="3_dlec0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stsnq"]
+height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj56e"]
+atlas = ExtResource("2_lkvo2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebbvx"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4a4i"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hmfc"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifdtg"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdgaf"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58qlc"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nci10"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lngky"]
+atlas = ExtResource("2_8wbco")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vw3l"]
+atlas = ExtResource("2_j1m5f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xqwa"]
+atlas = ExtResource("2_j1m5f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4gu0"]
+atlas = ExtResource("2_j1m5f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x37n"]
+atlas = ExtResource("2_j1m5f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8ieo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj56e")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebbvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4a4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hmfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifdtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdgaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58qlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nci10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lngky")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vw3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xqwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4gu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x37n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_5jkab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 4)
+shape = SubResource("CapsuleShape2D_stsnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 4)
+sprite_frames = SubResource("SpriteFrames_t8ieo")
+animation = &"Jump"
+autoplay = "default"
+frame_progress = 0.672945
+
+[node name="WhatsAppImage2024-07-04At22_02_11-removebg-preview" type="Sprite2D" parent="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(1.0625, -5.125)
+scale = Vector2(0.552083, 0.554687)
+texture = ExtResource("3_dlec0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
+limit_left = -100
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+editor_draw_limits = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
