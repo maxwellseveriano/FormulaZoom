@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4i8830lhcpf7"]
+[gd_scene load_steps=15 format=3 uid="uid://c4i8830lhcpf7"]
 
 [ext_resource type="Texture2D" uid="uid://bc3uq4cw01302" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_m3bqu"]
 [ext_resource type="Texture2D" uid="uid://c7r8vtxt20gfw" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_1v58i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cncquonc1do6a" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/Design_sem_nome__34_-removebg-preview.png" id="6_g2xys"]
 [ext_resource type="Texture2D" uid="uid://cwri0rnsk68oc" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="7_a0x7x"]
 [ext_resource type="Texture2D" uid="uid://cfdj1st0gqge0" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_iwc0a"]
+[ext_resource type="PackedScene" uid="uid://1olgibbt2td2" path="res://actors/roda.tscn" id="10_w16yt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4u3w"]
 texture = ExtResource("1_m3bqu")
@@ -292,3 +293,12 @@ position = Vector2(-8, -56)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_iwc0a")
 centered = false
+
+[node name="roda" parent="." instance=ExtResource("10_w16yt")]
+position = Vector2(410, 18)
+
+[node name="roda2" parent="." instance=ExtResource("10_w16yt")]
+position = Vector2(804, 222)
+
+[node name="roda3" parent="." instance=ExtResource("10_w16yt")]
+position = Vector2(1075, 120)
