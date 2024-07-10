@@ -305,7 +305,7 @@ position = Vector2(804, 222)
 [node name="roda3" parent="." instance=ExtResource("10_w16yt")]
 position = Vector2(1075, 120)
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.4, 1.4)
 limit_left = -100
 limit_smoothed = true

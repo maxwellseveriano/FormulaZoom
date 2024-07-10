@@ -1,10 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://1olgibbt2td2"]
+[gd_scene load_steps=9 format=3 uid="uid://1olgibbt2td2"]
 
 [ext_resource type="Texture2D" uid="uid://bc1ofg3udcays" path="res://assets/Roda/Roda.png" id="1_1n7v3"]
 [ext_resource type="Script" path="res://Scripts/roda.gd" id="1_tfv4w"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_qcd2m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05ftu"]
 radius = 11.0
+
+[sub_resource type="Animation" id="Animation_3fnhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_1n7v3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_a6njs"]
 resource_name = "rolar"
@@ -47,52 +87,16 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_3fnhq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_1n7v3")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../texture:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t53r8"]
 _data = {
 "RESET": SubResource("Animation_3fnhq"),
 "rolar": SubResource("Animation_a6njs")
 }
 
-[node name="roda" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1yvef"]
+radius = 12.0
+
+[node name="roda" type="CharacterBody2D" groups=["enemy_roda"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_tfv4w")
@@ -104,7 +108,6 @@ texture = ExtResource("1_1n7v3")
 hframes = 4
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_05ftu")
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -118,3 +121,10 @@ speed_scale = 1.5
 [node name="wall_detector" type="RayCast2D" parent="."]
 target_position = Vector2(-11.2, 0)
 collision_mask = 6
+
+[node name="hitbox" parent="." instance=ExtResource("3_qcd2m")]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_1yvef")
