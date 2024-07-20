@@ -13,7 +13,7 @@ func _process(delta):
 func _on_body_entered(body):
 	$anim.play("collect")
 	await $colisao.call_deferred("queue_free")
-	Globals.score += 100
+	Globals.score += 10
 	Globals.moedas += moedas
 
 

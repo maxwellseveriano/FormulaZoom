@@ -554,6 +554,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_v0isf")
+default_minutes = 5
+
+[node name="clock_timer" type="Timer" parent="HUD/control"]
+autostart = true
 
 [node name="container" type="MarginContainer" parent="HUD/control"]
 layout_mode = 1
@@ -573,6 +577,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="moedas_icon" type="TextureRect" parent="HUD/control/container/moedas_container"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -645,6 +650,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -669,3 +675,5 @@ theme_override_fonts/font = ExtResource("19_6i2ie")
 theme_override_font_sizes/font_size = 8
 text = "03"
 vertical_alignment = 1
+
+[connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
