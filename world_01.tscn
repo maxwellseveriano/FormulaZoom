@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4i8830lhcpf7"]
+[gd_scene load_steps=20 format=3 uid="uid://c4i8830lhcpf7"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_uvyec"]
 [ext_resource type="Texture2D" uid="uid://c7r8vtxt20gfw" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_1v58i"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cwri0rnsk68oc" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="7_a0x7x"]
 [ext_resource type="Texture2D" uid="uid://cfdj1st0gqge0" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_iwc0a"]
 [ext_resource type="PackedScene" uid="uid://1olgibbt2td2" path="res://actors/roda.tscn" id="10_w16yt"]
+[ext_resource type="PackedScene" uid="uid://dogsoq0gvno6t" path="res://prefabs/moeda.tscn" id="13_bn17p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mf7fp"]
 texture = ExtResource("2_1v58i")
@@ -404,30 +405,6 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_iwc0a")
 centered = false
 
-[node name="roda" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(410, 18)
-
-[node name="roda2" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(804, 222)
-
-[node name="roda3" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(1075, 120)
-
-[node name="roda4" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(1844, 155)
-
-[node name="roda5" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(2364, 100)
-
-[node name="roda8" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(3332, 133)
-
-[node name="roda6" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(2221, 83)
-
-[node name="roda7" parent="." instance=ExtResource("10_w16yt")]
-position = Vector2(3460, 132)
-
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(1.4, 1.4)
 limit_left = -100
@@ -436,3 +413,115 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 drag_horizontal_enabled = true
 editor_draw_limits = true
+
+[node name="moedas" type="Node2D" parent="."]
+
+[node name="moeda" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(60, 178)
+
+[node name="moeda17" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(232, 128)
+
+[node name="moeda18" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(288, 96)
+
+[node name="moeda19" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(368, 144)
+
+[node name="moeda20" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(552, 224)
+
+[node name="moeda21" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1088, 224)
+
+[node name="moeda22" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(648, 144)
+
+[node name="moeda23" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1440, 224)
+
+[node name="moeda24" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1792, 224)
+
+[node name="moeda25" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2480, 224)
+
+[node name="moeda26" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2136, 224)
+
+[node name="moeda27" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2683, 226)
+
+[node name="moeda28" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2830, 226)
+
+[node name="moeda2" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(459, 108)
+
+[node name="moeda3" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(152, 160)
+
+[node name="moeda4" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(744, 112)
+
+[node name="moeda5" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(848, 224)
+
+[node name="moeda6" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1128, 112)
+
+[node name="moeda7" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1305, 162)
+
+[node name="moeda8" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1632, 224)
+
+[node name="moeda9" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2314, 224)
+
+[node name="moeda10" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(1962, 144)
+
+[node name="moeda11" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2289, 127)
+
+[node name="moeda12" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(2757, 226)
+
+[node name="moeda13" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(3344, 224)
+
+[node name="moeda14" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(3416, 224)
+
+[node name="moeda15" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(3488, 224)
+
+[node name="moeda16" parent="moedas" instance=ExtResource("13_bn17p")]
+position = Vector2(3856, 64)
+
+[node name="rodas" type="Node2D" parent="."]
+
+[node name="roda" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(410, 18)
+
+[node name="roda2" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(804, 222)
+
+[node name="roda3" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(1075, 120)
+
+[node name="roda4" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(1844, 155)
+
+[node name="roda5" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(2364, 100)
+
+[node name="roda8" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(3332, 133)
+
+[node name="roda6" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(2221, 83)
+
+[node name="roda7" parent="rodas" instance=ExtResource("10_w16yt")]
+position = Vector2(3460, 132)
