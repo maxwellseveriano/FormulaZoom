@@ -9,10 +9,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animation:= $AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
-var player_life := 10
 var knockback_vector := Vector2.ZERO
 var is_jumping:= false
 var knockback_power := 20
+
+signal player_has_died()
 
 
 func _physics_process(delta):
@@ -60,25 +61,20 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("enemy_roda"):
 		#queue_free()
 	var knockback
-	if player_life < 0:
+	if Globals.player_life == 0:
 		queue_free()
+		emit_signal("player_has_died")
 	else:
 		knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
-		print (player_life)
-		
-		if Globals.score >= 200:
-			Globals.score -= 200
-		else:
-			Globals.score = 0
-			
 		take_damage(knockback)
+		print (Globals.player_life)
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	player_life -= 1
+	Globals.player_life -= 1
 	
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
