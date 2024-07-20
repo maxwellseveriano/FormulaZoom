@@ -65,6 +65,12 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	else:
 		knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
 		print (player_life)
+		
+		if Globals.score >= 200:
+			Globals.score -= 200
+		else:
+			Globals.score = 0
+			
 		take_damage(knockback)
 
 func follow_camera(camera):
