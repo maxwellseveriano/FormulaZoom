@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c4i8830lhcpf7"]
+[gd_scene load_steps=30 format=3 uid="uid://c4i8830lhcpf7"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_uvyec"]
 [ext_resource type="Texture2D" uid="uid://c7r8vtxt20gfw" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_1v58i"]
@@ -22,6 +22,7 @@
 [ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="19_6i2ie"]
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="20_f7gbr"]
 [ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
+[ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mf7fp"]
 texture = ExtResource("2_1v58i")
@@ -679,5 +680,7 @@ vertical_alignment = 1
 
 [node name="checkpoint" parent="." instance=ExtResource("22_8ymbp")]
 position = Vector2(4048, 159)
+
+[node name="pause_menu" parent="." instance=ExtResource("23_qwdxo")]
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
