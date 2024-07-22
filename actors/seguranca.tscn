@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2tdfoyfub53h"]
+[gd_scene load_steps=10 format=3 uid="uid://b4rv78xoss7kl"]
 
 [ext_resource type="Script" path="res://Scripts/seguranca.gd" id="1_smjhc"]
-[ext_resource type="Texture2D" uid="uid://burm0xjtduw8x" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
+[ext_resource type="Texture2D" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
 [ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_1dcmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trte8"]
