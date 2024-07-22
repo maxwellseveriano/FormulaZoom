@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c4i8830lhcpf7"]
+[gd_scene load_steps=37 format=3 uid="uid://c4i8830lhcpf7"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_uvyec"]
 [ext_resource type="Texture2D" uid="uid://c7r8vtxt20gfw" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_1v58i"]
@@ -23,6 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="20_f7gbr"]
 [ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
 [ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
+[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="24_v22ce"]
+[ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_5uyja"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="25_xr6cv"]
+[ext_resource type="Script" path="res://Scripts/color_rect.gd" id="26_xn80l"]
+[ext_resource type="AudioStream" uid="uid://b1dnvkpra2ovo" path="res://sounds/finish_soud_sfx.wav" id="28_07jve"]
+[ext_resource type="AudioStream" uid="uid://cgqvo4aay12jl" path="res://sounds/background_sfx.wav" id="28_l7haj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mf7fp"]
 texture = ExtResource("2_1v58i")
@@ -347,6 +353,13 @@ frame_2/duration = 1.0
 frame_3/texture = ExtResource("18_h4gyb")
 frame_3/duration = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4jtl"]
+shader = ExtResource("25_5uyja")
+shader_parameter/lines = 10.0
+shader_parameter/threshold = 0.0
+shader_parameter/line_color_a = Color(1, 1, 1, 1)
+shader_parameter/line_color_b = Color(0, 0, 0, 1)
+
 [node name="world-01" type="Node2D"]
 script = ExtResource("1_uvyec")
 metadata/_edit_vertical_guides_ = [-367.0]
@@ -368,6 +381,10 @@ position = Vector2(2757, 251)
 
 [node name="falling-plataform4" parent="." instance=ExtResource("4_7avn0")]
 position = Vector2(2829, 251)
+
+[node name="goal" parent="." instance=ExtResource("24_v22ce")]
+position = Vector2(4083, 142)
+next_level = "res://levels/world_02.tscn"
 
 [node name="player" parent="." instance=ExtResource("3_lk4vs")]
 
@@ -546,6 +563,9 @@ position = Vector2(2221, 83)
 [node name="roda7" parent="rodas" instance=ExtResource("10_w16yt")]
 position = Vector2(3460, 132)
 
+[node name="checkpoint" parent="." instance=ExtResource("22_8ymbp")]
+position = Vector2(4048, 159)
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="control" type="Control" parent="HUD"]
@@ -556,7 +576,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_v0isf")
-default_minutes = 5
+default_minutes = 0
+default_seconds = 50
 
 [node name="clock_timer" type="Timer" parent="HUD/control"]
 autostart = true
@@ -678,9 +699,30 @@ theme_override_font_sizes/font_size = 8
 text = "03"
 vertical_alignment = 1
 
-[node name="checkpoint" parent="." instance=ExtResource("22_8ymbp")]
-position = Vector2(4048, 159)
-
 [node name="pause_menu" parent="." instance=ExtResource("23_qwdxo")]
+
+[node name="transition" type="CanvasLayer" parent="."]
+script = ExtResource("25_xr6cv")
+
+[node name="color_rect" type="ColorRect" parent="transition"]
+material = SubResource("ShaderMaterial_t4jtl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("26_xn80l")
+
+[node name="finish_sfx" type="AudioStreamPlayer" parent="transition"]
+stream = ExtResource("28_07jve")
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_l7haj")
+volume_db = -30.0
+autoplay = true
+
+[node name="player_start_position" type="Marker2D" parent="."]
+position = Vector2(19, 211)
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

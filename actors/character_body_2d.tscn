@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://ly1joicxakhf"]
+[gd_scene load_steps=24 format=3 uid="uid://ly1joicxakhf"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_5jkab"]
 [ext_resource type="Texture2D" uid="uid://b3xh33ydpoqqn" path="res://assets/Sprite Pack 2/4 - Tommy/Running (32 x 32).png" id="2_8wbco"]
 [ext_resource type="Texture2D" uid="uid://5ah434vgo6cf" path="res://assets/Sprite Pack 2/4 - Tommy/Idle_Poses (32 x 32).png" id="2_j1m5f"]
 [ext_resource type="Texture2D" uid="uid://bnsltjvaaodmc" path="res://assets/Sprite Pack 2/4 - Tommy/Jumping (32 x 32).png" id="2_lkvo2"]
 [ext_resource type="Texture2D" uid="uid://w8fqai5gxvsc" path="res://assets/Sprite Pack 2/4 - Tommy/WhatsApp_Image_2024-07-04_at_22.02.11-removebg-preview.png" id="3_dlec0"]
+[ext_resource type="AudioStream" uid="uid://bf4drkgqola8k" path="res://sounds/jump_sfx.wav" id="6_t10ty"]
+[ext_resource type="AudioStream" uid="uid://bfwu5i382ntqa" path="res://sounds/damage_sound_sfx_piadoca.wav" id="7_7vauk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stsnq"]
 height = 28.0
@@ -154,5 +156,16 @@ shape = SubResource("RectangleShape2D_0uxq5")
 debug_color = Color(0.861138, 0.332465, 0.333839, 0.42)
 
 [node name="remote" type="RemoteTransform2D" parent="."]
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="jump_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("6_t10ty")
+volume_db = -40.0
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("7_7vauk")
+volume_db = -15.0
+pitch_scale = 0.6
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
