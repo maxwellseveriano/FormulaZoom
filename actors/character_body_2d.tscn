@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://ly1joicxakhf"]
+[gd_scene load_steps=25 format=3 uid="uid://ly1joicxakhf"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_5jkab"]
 [ext_resource type="Texture2D" uid="uid://b3xh33ydpoqqn" path="res://assets/Sprite Pack 2/4 - Tommy/Running (32 x 32).png" id="2_8wbco"]
 [ext_resource type="Texture2D" uid="uid://5ah434vgo6cf" path="res://assets/Sprite Pack 2/4 - Tommy/Idle_Poses (32 x 32).png" id="2_j1m5f"]
 [ext_resource type="Texture2D" uid="uid://bnsltjvaaodmc" path="res://assets/Sprite Pack 2/4 - Tommy/Jumping (32 x 32).png" id="2_lkvo2"]
 [ext_resource type="Texture2D" uid="uid://w8fqai5gxvsc" path="res://assets/Sprite Pack 2/4 - Tommy/WhatsApp_Image_2024-07-04_at_22.02.11-removebg-preview.png" id="3_dlec0"]
+[ext_resource type="Texture2D" uid="uid://xglhvpvlm8s5" path="res://assets/Sprite Pack 2/4 - Tommy/Throw_Object (32 x 32).png" id="4_led8e"]
 [ext_resource type="AudioStream" uid="uid://bf4drkgqola8k" path="res://sounds/jump_sfx.wav" id="6_t10ty"]
 [ext_resource type="AudioStream" uid="uid://bfwu5i382ntqa" path="res://sounds/damage_sound_sfx_piadoca.wav" id="7_7vauk"]
 
@@ -104,6 +105,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_led8e")
+}],
+"loop": true,
+"name": &"Throw_Object",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2vw3l")
 }, {
 "duration": 1.0,
@@ -134,9 +143,9 @@ shape = SubResource("CapsuleShape2D_stsnq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, 4)
 sprite_frames = SubResource("SpriteFrames_t8ieo")
-animation = &"Jump"
+animation = &"Throw_Object"
 autoplay = "default"
-frame_progress = 0.672945
+frame_progress = 0.203457
 
 [node name="WhatsAppImage2024-07-04At22_02_11-removebg-preview" type="Sprite2D" parent="AnimatedSprite2D"]
 texture_filter = 1
@@ -168,4 +177,8 @@ stream = ExtResource("7_7vauk")
 volume_db = -15.0
 pitch_scale = 0.6
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(21, 12)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -4,6 +4,15 @@ extends CharacterBody2D
 const SPEED = 170.0
 const AIR_FRICTION := 0.5
 
+var direction
+var is_shooting := false
+var is_running := false
+var is_attacking := false
+
+const SETA = preload("res://prefabs/seta.tscn")
+
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 @export var jump_height := 170
@@ -29,6 +38,15 @@ func _ready():
 	fall_gravity = gravity * 2
 
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed("move_right"):
+		if sign($Node2D.position.x) == -1:
+			$Node2D.position.x *=-1
+	elif Input.is_action_just_pressed("move_left"):
+		if sign($Node2D.position.x) == 1:
+			$Node2D.position.x *=-1
+			
+	
 	# Add the gravity.
 	
 	if not is_on_floor():
@@ -40,6 +58,7 @@ func _physics_process(delta):
 		velocity.y = -jump_velocity
 		is_jumping = true
 		jump_sfx.play()
+		
 	elif is_on_floor():
 		is_jumping = false
 	
@@ -47,6 +66,9 @@ func _physics_process(delta):
 		velocity.y += fall_gravity * delta
 	else: 
 		velocity.y += gravity * delta
+		
+
+	
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -57,15 +79,37 @@ func _physics_process(delta):
 		animation.scale.x = direction
 		if not is_jumping:
 			animation.play("Run")
+			is_running = true
+			is_shooting = false
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("default")
+		if is_shooting == false:
+			animation.play("default")
+			is_running = false
+		if is_shooting == true:
+			animation.play("Throw_Object")
 	
 	if is_jumping:
 		animation.play("Jump")
+		is_running = false
+		is_jumping = true
 
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
+	
+	if Input.is_action_just_pressed("shoot"):
+		
+		if !is_running and !is_jumping:
+			var seta = SETA.instantiate()
+			if sign($Node2D.position.x) == 1:
+				seta.set_seta_direction(1)
+			else:
+				seta.set_seta_direction(-1)
+			get_parent().add_child(seta)
+			seta.position = $Node2D.global_position
+			is_shooting = true
+		
 	
 	move_and_slide()
 	
@@ -104,3 +148,20 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		knockback_tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, duration)
 		animation.modulate = Color(1,0,0,1)
 		knockback_tween.parallel().tween_property(animation, "modulate", Color(1,1,1,1), duration)
+
+func handle_animation():
+	
+	if !is_on_floor() and !is_shooting:
+		animation.play("Jump")
+	elif !direction and !is_shooting:
+		animation.play("Run")
+	elif !direction and is_shooting:
+		animation.play("Throw_Object")
+	elif is_shooting or direction:
+		animation.play("Throw_Object")
+	else:
+		animation.play("default")
+	#if velocity.y > 0 and !is_on_floor():
+		#animation.play("fall")
+	#if direction !=0 :
+	#	$AnimatedSprite2D.scale.x = direction
