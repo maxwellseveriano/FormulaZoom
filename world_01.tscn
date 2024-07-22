@@ -600,19 +600,18 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="moedas_icon" type="TextureRect" parent="HUD/control/container/moedas_container"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 texture = SubResource("AnimatedTexture_pe3s8")
+expand_mode = 2
 
 [node name="moedas_contador" type="Label" parent="HUD/control/container/moedas_container"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "000"
 vertical_alignment = 1
 
@@ -625,9 +624,9 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "TEMPO:"
 vertical_alignment = 1
 
@@ -635,9 +634,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "00:00"
 vertical_alignment = 1
 
@@ -650,9 +649,9 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "SCORE:"
 vertical_alignment = 1
 
@@ -660,9 +659,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "000000"
 vertical_alignment = 1
 
@@ -673,19 +672,19 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
 texture = ExtResource("20_f7gbr")
+expand_mode = 2
 
 [node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "X"
 vertical_alignment = 1
 
@@ -693,9 +692,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("19_6i2ie")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "03"
 vertical_alignment = 1
 
