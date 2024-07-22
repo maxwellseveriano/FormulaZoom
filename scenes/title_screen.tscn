@@ -16,7 +16,7 @@ tracks/0/path = NodePath("bg:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
+"times": PackedFloat32Array(0.1, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -28,10 +28,10 @@ tracks/1/path = NodePath("MarginContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 0.9),
+"times": PackedFloat32Array(0.4, 0.8),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(0, -250), Vector2(0, 40.5)]
+"values": [Vector2(300, -225), Vector2(220, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_y57pu"]
@@ -90,12 +90,13 @@ expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -410.0
-offset_bottom = -171.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = -225.0
+offset_right = 7340.0
+offset_bottom = 3295.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 20
@@ -103,8 +104,8 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

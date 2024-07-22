@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn4o76d53cxty"]
+[gd_scene load_steps=7 format=3 uid="uid://cn4o76d53cxty"]
 
 [ext_resource type="Script" path="res://Scripts/seta.gd" id="1_5po06"]
 [ext_resource type="Texture2D" uid="uid://deuecg26ntw84" path="res://assets/Features/ddmcesu-4ae391a9-73a4-4bc2-b002-78ac3ca7d254-removebg-preview.png" id="1_an5el"]
+[ext_resource type="PackedScene" uid="uid://df4ut0vnog2qs" path="res://prefabs/hitbox_seta.tscn" id="3_01s7p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xf7aj"]
 animations = [{
@@ -17,7 +18,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upwrg"]
 size = Vector2(109.756, 121.622)
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t80u"]
+size = Vector2(9, 10)
+
+[node name="setas" type="Area2D"]
 script = ExtResource("1_5po06")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -34,6 +38,16 @@ shape = SubResource("RectangleShape2D_upwrg")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1, 1)
 scale = Vector2(0.75, 0.7)
+
+[node name="hitbox_seta" parent="." instance=ExtResource("3_01s7p")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_seta"]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_7t80u")
+
+[node name="seta_sound" type="Node2D" parent="."]
+
+[node name="Som_seta" type="AudioStreamPlayer" parent="seta_sound"]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

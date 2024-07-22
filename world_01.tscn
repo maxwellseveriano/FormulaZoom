@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="18_h4gyb"]
 [ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="19_6i2ie"]
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="20_f7gbr"]
-[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
-[ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
-[ext_resource type="PackedScene" path="res://prefabs/goal.tscn" id="24_v22ce"]
+[ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
+[ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
+[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="24_v22ce"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_5uyja"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_xr6cv"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="26_xn80l"]
@@ -537,7 +537,7 @@ position = Vector2(3488, 224)
 [node name="moeda16" parent="moedas" instance=ExtResource("13_bn17p")]
 position = Vector2(3856, 64)
 
-[node name="rodas" type="Node2D" parent="."]
+[node name="rodas" type="Node2D" parent="." groups=["enemy_roda"]]
 
 [node name="roda" parent="rodas" instance=ExtResource("10_w16yt")]
 position = Vector2(410, 18)
@@ -563,7 +563,7 @@ position = Vector2(2221, 83)
 [node name="roda7" parent="rodas" instance=ExtResource("10_w16yt")]
 position = Vector2(3460, 132)
 
-[node name="checkpoint" parent="." instance=ExtResource("22_8ymbp")]
+[node name="checkpoint" parent="." groups=["enemy_roda"] instance=ExtResource("22_8ymbp")]
 position = Vector2(4048, 159)
 
 [node name="HUD" type="CanvasLayer" parent="."]

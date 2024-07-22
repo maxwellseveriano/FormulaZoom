@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c37yy81auxkul"]
+
+[node name="hurbox_enemy" type="Area2D"]
+collision_layer = 128
+collision_mask = 64

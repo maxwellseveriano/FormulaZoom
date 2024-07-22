@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://1olgibbt2td2"]
+[gd_scene load_steps=12 format=3 uid="uid://1olgibbt2td2"]
 
 [ext_resource type="Texture2D" uid="uid://bc1ofg3udcays" path="res://assets/Roda/Roda.png" id="1_1n7v3"]
 [ext_resource type="Script" path="res://Scripts/roda.gd" id="1_tfv4w"]
 [ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_qcd2m"]
+[ext_resource type="PackedScene" uid="uid://c37yy81auxkul" path="res://prefabs/hurbox_enemy.tscn" id="4_ljwn4"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="5_8hq37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05ftu"]
 radius = 11.0
@@ -96,21 +98,24 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yvef"]
 radius = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1v0w4"]
+radius = 11.1803
+
 [node name="roda" type="CharacterBody2D" groups=["enemy_roda"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 67
 script = ExtResource("1_tfv4w")
 
-[node name="texture" type="Sprite2D" parent="."]
+[node name="texture" type="Sprite2D" parent="." groups=["enemy_roda"]]
 texture_filter = 1
 scale = Vector2(0.166694, 0.166694)
 texture = ExtResource("1_1n7v3")
 hframes = 4
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="." groups=["enemy_roda"]]
 shape = SubResource("CircleShape2D_05ftu")
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." groups=["enemy_roda"]]
 root_node = NodePath("../collision")
 libraries = {
 "": SubResource("AnimationLibrary_t53r8")
@@ -118,13 +123,26 @@ libraries = {
 autoplay = "rolar"
 speed_scale = 1.5
 
-[node name="wall_detector" type="RayCast2D" parent="."]
+[node name="wall_detector" type="RayCast2D" parent="." groups=["enemy_roda"]]
 target_position = Vector2(-11.2, 0)
 collision_mask = 6
 
-[node name="hitbox" parent="." instance=ExtResource("3_qcd2m")]
+[node name="hitbox" parent="." groups=["enemy_roda"] instance=ExtResource("3_qcd2m")]
 position = Vector2(0, -1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["enemy_roda"]]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_1yvef")
+
+[node name="hurbox_enemy" parent="." groups=["enemy_roda"] instance=ExtResource("4_ljwn4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox_enemy" groups=["enemy_roda"]]
+shape = SubResource("CircleShape2D_1v0w4")
+debug_color = Color(0.98067, 0.0409745, 0.3422, 0.42)
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("5_8hq37")
+volume_db = -15.0
+pitch_scale = 0.6

@@ -51,6 +51,8 @@ move_right={
 2d_physics/layer_4="Items"
 2d_physics/layer_5="hitbox"
 2d_physics/layer_6="hurtbox"
+2d_physics/layer_7="hitbox_seta"
+2d_physics/layer_8="hurtbox_enemy"
 
 [rendering]
 
