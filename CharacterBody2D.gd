@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 170.0
+const AIR_FRICTION := 0.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+@export var jump_height := 170
+@export var max_time_to_peak := 0.8
+var gravity 
+var jump_velocity
+var fall_gravity
 
 @onready var animation:= $AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
@@ -18,25 +23,37 @@ var knockback_power := 20
 
 signal player_has_died()
 
+func _ready():
+	jump_velocity = (jump_height * 2) / max_time_to_peak
+	gravity = (jump_height * 2) / (max_time_to_peak * max_time_to_peak)
+	fall_gravity = gravity * 2
+
 func _physics_process(delta):
 	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		velocity.x = 0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = -jump_velocity
 		is_jumping = true
 		jump_sfx.play()
 	elif is_on_floor():
 		is_jumping = false
+	
+	if velocity.y > 0 or not Input.is_action_pressed("ui_accept"):
+		velocity.y += fall_gravity * delta
+	else: 
+		velocity.y += gravity * delta
 		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
-		velocity.x = direction * SPEED
+		velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
 		animation.scale.x = direction
 		if not is_jumping:
 			animation.play("Run")
