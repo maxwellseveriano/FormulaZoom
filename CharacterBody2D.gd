@@ -9,12 +9,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animation:= $AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
+@onready var jump_sfx = $player_sounds/jump_sfx as AudioStreamPlayer
+@onready var damage_sfx = $player_sounds/damage_sfx as AudioStreamPlayer
+
 var knockback_vector := Vector2.ZERO
 var is_jumping:= false
 var knockback_power := 20
 
 signal player_has_died()
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -25,6 +27,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
+		jump_sfx.play()
 	elif is_on_floor():
 		is_jumping = false
 		
@@ -75,6 +78,7 @@ func follow_camera(camera):
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	Globals.player_life -= 1
+	damage_sfx.play()
 	
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force

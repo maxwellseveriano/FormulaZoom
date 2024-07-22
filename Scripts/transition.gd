@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var color_rect = $color_rect
+@onready var finish_sfx = $finish_sfx as AudioStreamPlayer
 
 func _ready():
 	show_new_scene()
@@ -8,6 +9,7 @@ func _ready():
 func change_scene(path, delay = 1.0):
 	var scene_transition = get_tree().create_tween()
 	scene_transition.tween_property(color_rect, "threshold", 1.0, 0.5).set_delay(delay)
+	finish_sfx.play()
 	await scene_transition.finished
 	assert(get_tree().change_scene_to_file(path) == OK)
 	
