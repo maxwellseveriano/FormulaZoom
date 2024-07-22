@@ -710,4 +710,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("27_duyw3")
 
+[node name="player_start_position" type="Marker2D" parent="."]
+position = Vector2(22, 196)
+
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
