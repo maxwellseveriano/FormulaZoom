@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2tdfoyfub53h"]
+
+[ext_resource type="Script" path="res://Scripts/seguranca.gd" id="1_smjhc"]
+[ext_resource type="Texture2D" uid="uid://burm0xjtduw8x" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_1dcmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trte8"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_3fnhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ni8h2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
+[sub_resource type="Animation" id="Animation_a6njs"]
+resource_name = "rolar"
+length = 0.4
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_aa5tj"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ni8h2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25, 26]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t53r8"]
+_data = {
+"RESET": SubResource("Animation_3fnhq"),
+"rolar": SubResource("Animation_a6njs"),
+"run": SubResource("Animation_aa5tj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3acxn"]
+size = Vector2(16, 32)
+
+[node name="seguranca" type="CharacterBody2D" groups=["enemy_roda"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_smjhc")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+scale = Vector2(1.04167, 1.04167)
+texture = ExtResource("2_ni8h2")
+flip_h = true
+hframes = 10
+vframes = 41
+frame = 20
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_trte8")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../collision")
+libraries = {
+"": SubResource("AnimationLibrary_t53r8")
+}
+autoplay = "run"
+speed_scale = 1.5
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+target_position = Vector2(-11.2, 0)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("3_1dcmo")]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_3acxn")
