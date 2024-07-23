@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 170.0
+const SPEED = 200
 const AIR_FRICTION := 0.5
 
 var direction
@@ -15,7 +15,7 @@ const SETA = preload("res://prefabs/seta.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
-@export var jump_height := 170
+@export var jump_height := 200
 @export var max_time_to_peak := 0.8
 var gravity 
 var jump_velocity
