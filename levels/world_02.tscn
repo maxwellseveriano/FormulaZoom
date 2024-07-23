@@ -1,11 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://dscsgbcn77x6o"]
+[gd_scene load_steps=34 format=3 uid="uid://dscsgbcn77x6o"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_nwqb8"]
 [ext_resource type="Texture2D" uid="uid://yaijl6m4n4pr" path="res://assets/Fase2/Blocks (16 x 16).png" id="2_5m82k"]
 [ext_resource type="Texture2D" uid="uid://bjvu8mhxssg31" path="res://assets/Fase2/Platform_blocks (16 x 16).png" id="3_37dp5"]
 [ext_resource type="Texture2D" uid="uid://mw8y0268h77u" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Metal_Wire_fence (16 x 16).png" id="4_v06tj"]
 [ext_resource type="PackedScene" uid="uid://q2hpkyrovpaw" path="res://falling_plataform.tscn" id="5_s1vau"]
-[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="6_fxttq"]
+[ext_resource type="PackedScene" path="res://prefabs/goal.tscn" id="6_fxttq"]
 [ext_resource type="PackedScene" uid="uid://ly1joicxakhf" path="res://actors/character_body_2d.tscn" id="7_sk3pe"]
 [ext_resource type="Texture2D" uid="uid://cun3yvrq7ygna" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="8_mobg1"]
 [ext_resource type="Shader" path="res://world_01.gdshader" id="9_amxwk"]
@@ -14,19 +14,18 @@
 [ext_resource type="Texture2D" uid="uid://cwri0rnsk68oc" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="12_dby8k"]
 [ext_resource type="Texture2D" uid="uid://cfdj1st0gqge0" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="13_n1gwe"]
 [ext_resource type="PackedScene" uid="uid://dogsoq0gvno6t" path="res://prefabs/moeda.tscn" id="14_se0s1"]
-[ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="16_7i603"]
+[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="16_7i603"]
+[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/00_Coin-Sprites.png" id="17_10h4x"]
 [ext_resource type="Script" path="res://Scripts/HUD_manager.gd" id="17_b1y1l"]
-[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/00_Coin-Sprites.png" id="18_r4yvd"]
-[ext_resource type="Texture2D" uid="uid://byt5ar30rr4lk" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/01_Coin-Sprites.png" id="19_e2d4v"]
-[ext_resource type="Texture2D" uid="uid://dn4vcy65s8hmt" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/02_Coin-Sprites.png" id="20_3b2bd"]
-[ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="21_dt332"]
 [ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="22_h02cy"]
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="23_nncvt"]
-[ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="24_6n2ny"]
+[ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="24_6n2ny"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_4wjgg"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="26_4a3xr"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="27_duyw3"]
+[ext_resource type="PackedScene" uid="uid://bpgrwnxkr2tu6" path="res://actors/xiumaker.tscn" id="27_h0mpb"]
 [ext_resource type="AudioStream" uid="uid://b1dnvkpra2ovo" path="res://sounds/finish_soud_sfx.wav" id="28_ibh65"]
+[ext_resource type="AudioStream" uid="uid://cgqvo4aay12jl" path="res://sounds/background_sfx.wav" id="29_aaaat"]
 [ext_resource type="PackedScene" uid="uid://b4rv78xoss7kl" path="res://actors/seguranca.tscn" id="29_c54ds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1at4"]
@@ -171,17 +170,6 @@ sources/2 = SubResource("TileSetAtlasSource_lawfs")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ueyv"]
 shader = ExtResource("9_amxwk")
 shader_parameter/move_speed = 0.05
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_pe3s8"]
-frames = 4
-speed_scale = 3.0
-frame_0/texture = ExtResource("18_r4yvd")
-frame_1/texture = ExtResource("19_e2d4v")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("20_3b2bd")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("21_dt332")
-frame_3/duration = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4jtl"]
 shader = ExtResource("26_4a3xr")
@@ -509,143 +497,6 @@ position = Vector2(3856, 64)
 [node name="checkpoint" parent="." instance=ExtResource("16_7i603")]
 position = Vector2(4046, 143)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="control" type="Control" parent="HUD"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -1.0
-offset_right = -5.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("17_b1y1l")
-default_seconds = 59
-
-[node name="clock_timer" type="Timer" parent="HUD/control"]
-autostart = true
-
-[node name="container" type="MarginContainer" parent="HUD/control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-metadata/_edit_lock_ = true
-
-[node name="moedas_container" type="HBoxContainer" parent="HUD/control/container"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="moedas_icon" type="TextureRect" parent="HUD/control/container/moedas_container"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_pe3s8")
-
-[node name="moedas_contador" type="Label" parent="HUD/control/container/moedas_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "000"
-vertical_alignment = 1
-
-[node name="timer_container" type="HBoxContainer" parent="HUD/control/container"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="timer_label" type="Label" parent="HUD/control/container/timer_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "TEMPO:"
-vertical_alignment = 1
-
-[node name="timer_contador" type="Label" parent="HUD/control/container/timer_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "00:00"
-vertical_alignment = 1
-
-[node name="score_container" type="HBoxContainer" parent="HUD/control/container"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="score_label" type="Label" parent="HUD/control/container/score_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "SCORE:"
-vertical_alignment = 1
-
-[node name="score_contador" type="Label" parent="HUD/control/container/score_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "000000"
-vertical_alignment = 1
-
-[node name="life_container" type="HBoxContainer" parent="HUD/control/container"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("23_nncvt")
-
-[node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "X"
-vertical_alignment = 1
-
-[node name="life_contador" type="Label" parent="HUD/control/container/life_container"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_h02cy")
-theme_override_font_sizes/font_size = 8
-text = "03"
-vertical_alignment = 1
-
 [node name="pause_menu" parent="." instance=ExtResource("24_6n2ny")]
 
 [node name="transition" type="CanvasLayer" parent="."]
@@ -721,5 +572,144 @@ position = Vector2(2802, 104)
 
 [node name="seguranca8" parent="." instance=ExtResource("29_c54ds")]
 position = Vector2(3074, -25)
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_aaaat")
+volume_db = -30.0
+autoplay = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_b1y1l")
+default_seconds = 59
+
+[node name="clock_timer" type="Timer" parent="HUD/control"]
+autostart = true
+
+[node name="container" type="MarginContainer" parent="HUD/control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="moedas_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="moedas_icon" type="TextureRect" parent="HUD/control/container/moedas_container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("17_10h4x")
+expand_mode = 2
+
+[node name="moedas_contador" type="Label" parent="HUD/control/container/moedas_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "000"
+vertical_alignment = 1
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "TEMPO:"
+vertical_alignment = 1
+
+[node name="timer_contador" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "00:00"
+vertical_alignment = 1
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="score_label" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "SCORE:"
+vertical_alignment = 1
+
+[node name="score_contador" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "000000"
+vertical_alignment = 1
+
+[node name="life_container" type="HBoxContainer" parent="HUD/control/container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("23_nncvt")
+expand_mode = 2
+
+[node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "X"
+vertical_alignment = 1
+
+[node name="life_contador" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("22_h02cy")
+theme_override_font_sizes/font_size = 16
+text = "03"
+vertical_alignment = 1
+
+[node name="Xiumaker" parent="." instance=ExtResource("27_h0mpb")]
+position = Vector2(3860, 221)
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

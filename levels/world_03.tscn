@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://cwlyfmqlq0vt6"]
+[gd_scene load_steps=37 format=3 uid="uid://cwlyfmqlq0vt6"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_8efsf"]
 [ext_resource type="Texture2D" uid="uid://jdrvue3kltmo" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Autumn_entities (16 x 16).png" id="2_10hj8"]
 [ext_resource type="Texture2D" uid="uid://dafjxd1y2t3e" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="3_2u0w1"]
 [ext_resource type="PackedScene" uid="uid://q2hpkyrovpaw" path="res://falling_plataform.tscn" id="5_lncps"]
-[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="6_q8fjl"]
+[ext_resource type="PackedScene" path="res://prefabs/goal.tscn" id="6_q8fjl"]
 [ext_resource type="Texture2D" uid="uid://bybfxn5bgt1p7" path="res://assets/Features/parallaxvai.png" id="7_7flcq"]
 [ext_resource type="PackedScene" uid="uid://ly1joicxakhf" path="res://actors/character_body_2d.tscn" id="7_lr0l1"]
 [ext_resource type="Shader" path="res://world_01.gdshader" id="9_5lam5"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://baq8qt8yi670j" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="13_buj4a"]
 [ext_resource type="PackedScene" uid="uid://dogsoq0gvno6t" path="res://prefabs/moeda.tscn" id="14_3rsof"]
 [ext_resource type="PackedScene" uid="uid://1olgibbt2td2" path="res://actors/roda.tscn" id="15_sxtga"]
-[ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="16_80l23"]
+[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="16_80l23"]
 [ext_resource type="Script" path="res://Scripts/HUD_manager.gd" id="17_s0opu"]
 [ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/00_Coin-Sprites.png" id="18_g26dg"]
 [ext_resource type="Texture2D" uid="uid://byt5ar30rr4lk" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/01_Coin-Sprites.png" id="19_gck02"]
@@ -21,13 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="21_sffki"]
 [ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="22_7jvdb"]
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="23_0bfku"]
-[ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="24_1j650"]
+[ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="24_1j650"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_ocv51"]
 [ext_resource type="PackedScene" uid="uid://bltaq4im0no51" path="res://actors/torcedor.tscn" id="26_0df8c"]
 [ext_resource type="AudioStream" uid="uid://b1dnvkpra2ovo" path="res://sounds/finish_soud_sfx.wav" id="26_0ev1u"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="26_74oie"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="27_evxlu"]
 [ext_resource type="PackedScene" uid="uid://b4rv78xoss7kl" path="res://actors/seguranca.tscn" id="27_k5e6q"]
+[ext_resource type="AudioStream" uid="uid://cgqvo4aay12jl" path="res://sounds/background_sfx.wav" id="29_7srgv"]
+[ext_resource type="PackedScene" uid="uid://dhoytkoecf6wh" path="res://actors/poste.tscn" id="30_ur8n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v4w0i"]
 texture = ExtResource("2_10hj8")
@@ -818,5 +820,13 @@ position = Vector2(2178, 68)
 
 [node name="seguranca" parent="." instance=ExtResource("27_k5e6q")]
 position = Vector2(2057, 225)
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_7srgv")
+volume_db = -30.0
+autoplay = true
+
+[node name="poste" parent="." instance=ExtResource("30_ur8n2")]
+position = Vector2(3874, 240)
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

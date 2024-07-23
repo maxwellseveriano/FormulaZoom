@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c4i8830lhcpf7"]
+[gd_scene load_steps=38 format=3 uid="uid://c4i8830lhcpf7"]
 
 [ext_resource type="Script" path="res://Scripts/world_01.gd" id="1_uvyec"]
 [ext_resource type="Texture2D" uid="uid://c7r8vtxt20gfw" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_1v58i"]
@@ -21,9 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="18_h4gyb"]
 [ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="19_6i2ie"]
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="20_f7gbr"]
-[ext_resource type="PackedScene" uid="uid://bc011w1qtf5yt" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
-[ext_resource type="PackedScene" uid="uid://cjn5bjpvrkop8" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
-[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="24_v22ce"]
+[ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
+[ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
+[ext_resource type="PackedScene" uid="uid://cigg2wry2wor0" path="res://actors/piquenique.tscn" id="24_uekyg"]
+[ext_resource type="PackedScene" path="res://prefabs/goal.tscn" id="24_v22ce"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_5uyja"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_xr6cv"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="26_xn80l"]
@@ -834,5 +835,8 @@ autoplay = true
 
 [node name="player_start_position" type="Marker2D" parent="."]
 position = Vector2(19, 211)
+
+[node name="piquenique" parent="." instance=ExtResource("24_uekyg")]
+position = Vector2(3818, 232)
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
