@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4rv78xoss7kl"]
+[gd_scene load_steps=11 format=3 uid="uid://b4rv78xoss7kl"]
 
 [ext_resource type="Script" path="res://Scripts/seguranca.gd" id="1_smjhc"]
-[ext_resource type="Texture2D" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
+[ext_resource type="Texture2D" uid="uid://burm0xjtduw8x" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
 [ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_1dcmo"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="4_n7n5c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trte8"]
 size = Vector2(16, 32)
@@ -100,7 +101,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3acxn"]
-size = Vector2(16, 32)
+size = Vector2(14, 32)
 
 [node name="seguranca" type="CharacterBody2D" groups=["enemy_roda"]]
 collision_layer = 4
@@ -135,7 +136,15 @@ collision_mask = 2
 
 [node name="hitbox" parent="." instance=ExtResource("3_1dcmo")]
 position = Vector2(0, -1)
+collision_mask = 97
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -15)
+position = Vector2(1, -15)
 shape = SubResource("RectangleShape2D_3acxn")
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("4_n7n5c")
+volume_db = -15.0
+pitch_scale = 0.6
