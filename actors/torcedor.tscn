@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwxms3hxd20eo"]
+[gd_scene load_steps=12 format=3 uid="uid://bltaq4im0no51"]
 
 [ext_resource type="Script" path="res://Scripts/torcedor.gd" id="1_cf8h4"]
 [ext_resource type="Texture2D" uid="uid://c3phqg2xrmg5l" path="res://assets/Sprite Pack 2/spritesheet_caveman.png" id="2_jutbr"]
@@ -48,16 +48,6 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_a6njs"]
-resource_name = "rolar"
-length = 0.4
-loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_aa5tj"]
-resource_name = "run"
-length = 0.7
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_i7277"]
 resource_name = "caveman"
 length = 1.1
@@ -98,6 +88,16 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14]
 }
+
+[sub_resource type="Animation" id="Animation_a6njs"]
+resource_name = "rolar"
+length = 0.4
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_aa5tj"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t53r8"]
 _data = {

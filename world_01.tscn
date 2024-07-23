@@ -396,7 +396,7 @@ position = Vector2(4083, 142)
 next_level = "res://levels/world_02.tscn"
 
 [node name="player" parent="." instance=ExtResource("3_lk4vs")]
-position = Vector2(17, 22)
+position = Vector2(17, 41)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -405,7 +405,7 @@ motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(432, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-6, -30)
+position = Vector2(-2, 2)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_2nayk")
 centered = false
@@ -673,6 +673,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 36.0
+offset_right = -1.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_v0isf")
@@ -686,6 +690,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -35.0
+offset_right = 4.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
@@ -807,6 +815,10 @@ material = SubResource("ShaderMaterial_t4jtl")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 7.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
