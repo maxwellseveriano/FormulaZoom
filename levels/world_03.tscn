@@ -506,7 +506,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_s0opu")
-default_minutes = 5
+default_seconds = 59
 metadata/_edit_lock_ = true
 
 [node name="clock_timer" type="Timer" parent="HUD/control"]
