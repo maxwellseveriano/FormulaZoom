@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://w8fqai5gxvsc" path="res://assets/Sprite Pack 2/4 - Tommy/WhatsApp_Image_2024-07-04_at_22.02.11-removebg-preview.png" id="3_dlec0"]
 [ext_resource type="Texture2D" uid="uid://xglhvpvlm8s5" path="res://assets/Sprite Pack 2/4 - Tommy/Throw_Object (32 x 32).png" id="4_led8e"]
 [ext_resource type="AudioStream" uid="uid://bf4drkgqola8k" path="res://sounds/jump_sfx.wav" id="6_t10ty"]
-[ext_resource type="AudioStream" uid="uid://bfwu5i382ntqa" path="res://sounds/damage_sound_sfx_piadoca.wav" id="7_7vauk"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="8_d5m4a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stsnq"]
 height = 28.0
@@ -173,9 +173,8 @@ stream = ExtResource("6_t10ty")
 volume_db = -40.0
 
 [node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
-stream = ExtResource("7_7vauk")
-volume_db = -15.0
-pitch_scale = 0.6
+stream = ExtResource("8_d5m4a")
+volume_db = -20.0
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(21, 12)

@@ -537,7 +537,7 @@ position = Vector2(3488, 224)
 [node name="moeda16" parent="moedas" instance=ExtResource("13_bn17p")]
 position = Vector2(3856, 64)
 
-[node name="rodas" type="Node2D" parent="."]
+[node name="rodas" type="Node2D" parent="." groups=["enemy_roda"]]
 
 [node name="roda" parent="rodas" instance=ExtResource("10_w16yt")]
 position = Vector2(410, 18)
@@ -563,7 +563,7 @@ position = Vector2(2221, 83)
 [node name="roda7" parent="rodas" instance=ExtResource("10_w16yt")]
 position = Vector2(3460, 132)
 
-[node name="checkpoint" parent="." instance=ExtResource("22_8ymbp")]
+[node name="checkpoint" parent="." groups=["enemy_roda"] instance=ExtResource("22_8ymbp")]
 position = Vector2(4048, 159)
 
 [node name="HUD" type="CanvasLayer" parent="."]

@@ -3,6 +3,7 @@ extends Area2D
 const  SPEED = 200
 var velocity = Vector2.ZERO
 var direction = 1
+@onready var damage_sfx = $player_sounds/damage_sfx as AudioStreamPlayer
 
 func set_seta_direction(dir):
 	

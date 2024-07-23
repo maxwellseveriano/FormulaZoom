@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://df4ut0vnog2qs"]
+
+[ext_resource type="Script" path="res://Scripts/hitbox_seta.gd" id="1_2elk0"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="2_0kkn5"]
+
+[node name="hitbox_seta" type="Area2D"]
+collision_layer = 64
+collision_mask = 148
+script = ExtResource("1_2elk0")
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("2_0kkn5")
+volume_db = -15.0
+pitch_scale = 0.6
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

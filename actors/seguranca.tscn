@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://1olgibbt2td2"]
+[gd_scene load_steps=11 format=3 uid="uid://b4rv78xoss7kl"]
 
-[ext_resource type="Texture2D" uid="uid://bc1ofg3udcays" path="res://assets/Roda/Roda.png" id="1_1n7v3"]
-[ext_resource type="Script" path="res://Scripts/roda.gd" id="1_tfv4w"]
-[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_qcd2m"]
-[ext_resource type="PackedScene" uid="uid://c37yy81auxkul" path="res://prefabs/hurbox_enemy.tscn" id="4_ljwn4"]
-[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="5_8hq37"]
+[ext_resource type="Script" path="res://Scripts/seguranca.gd" id="1_smjhc"]
+[ext_resource type="Texture2D" uid="uid://burm0xjtduw8x" path="res://assets/Sprite Pack 2/Officer_sheet_unboxed_0.png" id="2_ni8h2"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_1dcmo"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="4_n7n5c"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_05ftu"]
-radius = 11.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trte8"]
+size = Vector2(16, 32)
 
 [sub_resource type="Animation" id="Animation_3fnhq"]
 length = 0.001
@@ -21,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_1n7v3")]
+"values": [ExtResource("2_ni8h2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [10]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -45,12 +44,17 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [20]
 }
 
 [sub_resource type="Animation" id="Animation_a6njs"]
 resource_name = "rolar"
 length = 0.4
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_aa5tj"]
+resource_name = "run"
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -62,7 +66,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_1n7v3")]
+"values": [ExtResource("2_ni8h2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,7 +78,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [10]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,66 +87,64 @@ tracks/2/path = NodePath("../texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [20, 21, 22, 23, 24, 25, 26]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t53r8"]
 _data = {
 "RESET": SubResource("Animation_3fnhq"),
-"rolar": SubResource("Animation_a6njs")
+"rolar": SubResource("Animation_a6njs"),
+"run": SubResource("Animation_aa5tj")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1yvef"]
-radius = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3acxn"]
+size = Vector2(14, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1v0w4"]
-radius = 11.1803
-
-[node name="roda" type="CharacterBody2D" groups=["enemy_roda"]]
+[node name="seguranca" type="CharacterBody2D" groups=["enemy_roda"]]
 collision_layer = 4
-collision_mask = 67
-script = ExtResource("1_tfv4w")
+collision_mask = 2
+script = ExtResource("1_smjhc")
 
-[node name="texture" type="Sprite2D" parent="." groups=["enemy_roda"]]
+[node name="texture" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.166694, 0.166694)
-texture = ExtResource("1_1n7v3")
-hframes = 4
+position = Vector2(0, -16)
+scale = Vector2(1.04167, 1.04167)
+texture = ExtResource("2_ni8h2")
+flip_h = true
+hframes = 10
+vframes = 41
+frame = 20
 
-[node name="collision" type="CollisionShape2D" parent="." groups=["enemy_roda"]]
-shape = SubResource("CircleShape2D_05ftu")
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_trte8")
 
-[node name="anim" type="AnimationPlayer" parent="." groups=["enemy_roda"]]
+[node name="anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../collision")
 libraries = {
 "": SubResource("AnimationLibrary_t53r8")
 }
-autoplay = "rolar"
+autoplay = "run"
 speed_scale = 1.5
 
-[node name="wall_detector" type="RayCast2D" parent="." groups=["enemy_roda"]]
+[node name="wall_detector" type="RayCast2D" parent="."]
 target_position = Vector2(-11.2, 0)
-collision_mask = 6
+collision_mask = 2
 
-[node name="hitbox" parent="." groups=["enemy_roda"] instance=ExtResource("3_qcd2m")]
+[node name="hitbox" parent="." instance=ExtResource("3_1dcmo")]
 position = Vector2(0, -1)
+collision_mask = 97
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["enemy_roda"]]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_1yvef")
-
-[node name="hurbox_enemy" parent="." groups=["enemy_roda"] instance=ExtResource("4_ljwn4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox_enemy" groups=["enemy_roda"]]
-shape = SubResource("CircleShape2D_1v0w4")
-debug_color = Color(0.98067, 0.0409745, 0.3422, 0.42)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, -15)
+shape = SubResource("RectangleShape2D_3acxn")
 
 [node name="player_sounds" type="Node2D" parent="."]
 
 [node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
-stream = ExtResource("5_8hq37")
+stream = ExtResource("4_n7n5c")
 volume_db = -15.0
 pitch_scale = 0.6
