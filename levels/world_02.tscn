@@ -223,6 +223,7 @@ position = Vector2(4085, 129)
 next_level = "res://levels/world_03.tscn"
 
 [node name="player" parent="." instance=ExtResource("7_sk3pe")]
+position = Vector2(4000, 0)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
