@@ -23,13 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="23_0bfku"]
 [ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="24_1j650"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_ocv51"]
-[ext_resource type="PackedScene" uid="uid://bltaq4im0no51" path="res://actors/torcedor.tscn" id="26_0df8c"]
+[ext_resource type="PackedScene" uid="uid://cwxms3hxd20eo" path="res://actors/torcedor.tscn" id="26_0df8c"]
 [ext_resource type="AudioStream" uid="uid://b1dnvkpra2ovo" path="res://sounds/finish_soud_sfx.wav" id="26_0ev1u"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="26_74oie"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="27_evxlu"]
 [ext_resource type="PackedScene" uid="uid://b4rv78xoss7kl" path="res://actors/seguranca.tscn" id="27_k5e6q"]
 [ext_resource type="AudioStream" uid="uid://cgqvo4aay12jl" path="res://sounds/background_sfx.wav" id="29_7srgv"]
-[ext_resource type="PackedScene" uid="uid://dhoytkoecf6wh" path="res://actors/poste.tscn" id="30_ur8n2"]
+[ext_resource type="PackedScene" uid="uid://hflgku10cgvu" path="res://actors/poste.tscn" id="30_ur8n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v4w0i"]
 texture = ExtResource("2_10hj8")
@@ -366,7 +366,7 @@ position = Vector2(4082, 146)
 next_level = "res://levels/tela_win_go.tscn"
 
 [node name="player" parent="." instance=ExtResource("7_lr0l1")]
-position = Vector2(4008, 70)
+position = Vector2(12, 205)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

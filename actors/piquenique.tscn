@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cigg2wry2wor0"]
+[gd_scene load_steps=13 format=3 uid="uid://crdoesq47m01m"]
 
 [ext_resource type="Script" path="res://Scripts/piquenique.gd" id="1_jkty2"]
 [ext_resource type="Texture2D" uid="uid://dw16hudjrsom2" path="res://assets/Sprite Pack 2/4 - Tommy/Walking (32 x 32).png" id="2_0eggw"]

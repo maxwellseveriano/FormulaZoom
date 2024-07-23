@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://7vnej77fnga0" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/tile000.png" id="20_f7gbr"]
 [ext_resource type="PackedScene" path="res://prefabs/checkpoint.tscn" id="22_8ymbp"]
 [ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="23_qwdxo"]
-[ext_resource type="PackedScene" uid="uid://cigg2wry2wor0" path="res://actors/piquenique.tscn" id="24_uekyg"]
+[ext_resource type="PackedScene" uid="uid://crdoesq47m01m" path="res://actors/piquenique.tscn" id="24_uekyg"]
 [ext_resource type="PackedScene" path="res://prefabs/goal.tscn" id="24_v22ce"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_5uyja"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_xr6cv"]
@@ -397,7 +397,7 @@ position = Vector2(4083, 142)
 next_level = "res://levels/world_02.tscn"
 
 [node name="player" parent="." instance=ExtResource("3_lk4vs")]
-position = Vector2(4017, 83)
+position = Vector2(11, 204)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

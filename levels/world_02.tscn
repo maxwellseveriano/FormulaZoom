@@ -23,7 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="25_4wjgg"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="26_4a3xr"]
 [ext_resource type="Script" path="res://Scripts/color_rect.gd" id="27_duyw3"]
-[ext_resource type="PackedScene" uid="uid://bpgrwnxkr2tu6" path="res://actors/xiumaker.tscn" id="27_h0mpb"]
+[ext_resource type="PackedScene" uid="uid://dergbaxw1exm" path="res://actors/xiumaker.tscn" id="27_h0mpb"]
 [ext_resource type="AudioStream" uid="uid://b1dnvkpra2ovo" path="res://sounds/finish_soud_sfx.wav" id="28_ibh65"]
 [ext_resource type="AudioStream" uid="uid://cgqvo4aay12jl" path="res://sounds/background_sfx.wav" id="29_aaaat"]
 [ext_resource type="PackedScene" uid="uid://b4rv78xoss7kl" path="res://actors/seguranca.tscn" id="29_c54ds"]
@@ -259,7 +259,7 @@ position = Vector2(4085, 129)
 next_level = "res://levels/world_03.tscn"
 
 [node name="player" parent="." instance=ExtResource("7_sk3pe")]
-position = Vector2(4009, 89)
+position = Vector2(11, 186)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
