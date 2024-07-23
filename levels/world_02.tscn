@@ -271,7 +271,7 @@ position = Vector2(4085, 129)
 next_level = "res://levels/world_03.tscn"
 
 [node name="player" parent="." instance=ExtResource("7_sk3pe")]
-position = Vector2(10, 4)
+position = Vector2(4009, 89)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -516,10 +516,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -17.0
-offset_right = -9.0
-offset_bottom = -17.0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = -5.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_b1y1l")

@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=3 uid="uid://dusqk8udxv15r"]
+
+[ext_resource type="Script" path="res://levels/tela_win_go.gd" id="1_fjqck"]
+[ext_resource type="Texture2D" uid="uid://cvmdxdmig1wj0" path="res://assets/brick-pieces/Dialog_Box(16 x 16).png" id="1_pggwb"]
+[ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="2_ybrty"]
+[ext_resource type="Theme" uid="uid://ds35iupp0kml" path="res://Temas/default_buttons.tres" id="3_q86oi"]
+[ext_resource type="Texture2D" uid="uid://huxy2totb7no" path="res://assets/brick-pieces/Title GameOver Screen/carro_senna.png" id="4_ekssv"]
+[ext_resource type="Texture2D" uid="uid://dgfvrh8yg3sch" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/00_Coin-Sprites.png" id="5_muvyn"]
+[ext_resource type="Texture2D" uid="uid://byt5ar30rr4lk" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/01_Coin-Sprites.png" id="6_20emq"]
+[ext_resource type="Texture2D" uid="uid://dn4vcy65s8hmt" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/02_Coin-Sprites.png" id="7_cffkn"]
+[ext_resource type="Texture2D" uid="uid://bstuh08nhmt8u" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Coin-Sprites/03_Coin-Sprites.png" id="8_h3kd0"]
+[ext_resource type="FontFile" uid="uid://bbigqnlm7gsy" path="res://assets/fontes/RevMiniPixel.ttf" id="9_l54aq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2dd8"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_erta1"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("5_muvyn")
+frame_1/texture = ExtResource("6_20emq")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("7_cffkn")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("8_h3kd0")
+frame_3/duration = 1.0
+
+[node name="tela_win_go" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -1.0
+offset_right = -7.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fjqck")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="DialogBox(16X16)" type="Sprite2D" parent="TileMap"]
+position = Vector2(322, 120.5)
+scale = Vector2(33, 11.3125)
+texture = ExtResource("1_pggwb")
+
+[node name="Label" type="Label" parent="TileMap"]
+modulate = Color(0.0980392, 0.607843, 0.0627451, 1)
+offset_left = 161.0
+offset_top = 65.0
+offset_right = 529.0
+offset_bottom = 164.0
+text = "PARABÉNS, AILTON SETA AJEITOU SEU CARRO  
+E AGORA VAI PODER  LUTAR 
+PELO TÍTULO DO CAMPEONATO"
+horizontal_alignment = 1
+
+[node name="goal" parent="TileMap" instance=ExtResource("2_ybrty")]
+position = Vector2(125, 74)
+
+[node name="ColorRect" type="ColorRect" parent="TileMap"]
+offset_left = 92.0
+offset_top = 93.0
+offset_right = 164.0
+offset_bottom = 139.0
+color = Color(0.333333, 0.662745, 0.298039, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TileMap"]
+offset_left = 86.0
+offset_top = 92.0
+offset_right = 170.0
+offset_bottom = 156.0
+
+[node name="HSeparator" type="HSeparator" parent="TileMap/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f2dd8")
+
+[node name="Restart_Btn" type="Button" parent="TileMap/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_q86oi")
+text = "RESTART"
+
+[node name="HSeparator2" type="HSeparator" parent="TileMap/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f2dd8")
+
+[node name="Quit_Btn" type="Button" parent="TileMap/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_q86oi")
+text = "QUIT GAME"
+
+[node name="container" type="MarginContainer" parent="TileMap/VBoxContainer/Quit_Btn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 204.0
+offset_top = 12.0
+offset_right = 358.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="moedas_container" type="HBoxContainer" parent="TileMap/VBoxContainer/Quit_Btn/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="moedas_icon" type="TextureRect" parent="TileMap/VBoxContainer/Quit_Btn/container/moedas_container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_erta1")
+expand_mode = 2
+
+[node name="moedas_contador" type="Label" parent="TileMap/VBoxContainer/Quit_Btn/container/moedas_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("9_l54aq")
+theme_override_font_sizes/font_size = 16
+text = "000"
+vertical_alignment = 1
+
+[node name="score_container" type="HBoxContainer" parent="TileMap/VBoxContainer/Quit_Btn/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="score_label" type="Label" parent="TileMap/VBoxContainer/Quit_Btn/container/score_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("9_l54aq")
+theme_override_font_sizes/font_size = 16
+text = "SCORE:"
+vertical_alignment = 1
+
+[node name="score_contador" type="Label" parent="TileMap/VBoxContainer/Quit_Btn/container/score_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("9_l54aq")
+theme_override_font_sizes/font_size = 16
+text = "000000"
+vertical_alignment = 1
+
+[node name="CarroSenna" type="Sprite2D" parent="TileMap"]
+position = Vector2(221, 162)
+scale = Vector2(0.377814, 0.401235)
+texture = ExtResource("4_ekssv")
+
+[connection signal="pressed" from="TileMap/VBoxContainer/Restart_Btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="TileMap/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]
