@@ -5,7 +5,7 @@ extends Control
 func _ready():
 	Globals.moedas = 0
 	Globals.score = 0
-	Globals.player_life = 3
+	Globals.player_life = 7
 
 
 func _on_start_btn_pressed():

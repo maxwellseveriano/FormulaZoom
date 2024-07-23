@@ -29,7 +29,7 @@ func reload_game():
 	Globals.player.player_has_died.connect(game_over)
 	Globals.moedas = 0
 	Globals.score = 0
-	Globals.player_life = 3
+	Globals.player_life = 7
 	Globals.respawn_player()
 	
 func game_over():
