@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwxms3hxd20eo"]
+
+[ext_resource type="Script" path="res://Scripts/torcedor.gd" id="1_cf8h4"]
+[ext_resource type="Texture2D" uid="uid://c3phqg2xrmg5l" path="res://assets/Sprite Pack 2/spritesheet_caveman.png" id="2_jutbr"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="3_gb683"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="4_a2yw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trte8"]
+size = Vector2(15, 34)
+
+[sub_resource type="Animation" id="Animation_3fnhq"]
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jutbr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a6njs"]
+resource_name = "rolar"
+length = 0.4
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_aa5tj"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_i7277"]
+resource_name = "caveman"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jutbr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t53r8"]
+_data = {
+"RESET": SubResource("Animation_3fnhq"),
+"caveman": SubResource("Animation_i7277"),
+"rolar": SubResource("Animation_a6njs"),
+"run": SubResource("Animation_aa5tj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3acxn"]
+size = Vector2(15, 34)
+
+[node name="torcedor" type="CharacterBody2D" groups=["enemy_roda"]]
+position = Vector2(0, -1)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cf8h4")
+
+[node name="texture" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_jutbr")
+hframes = 4
+vframes = 4
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_trte8")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../collision")
+libraries = {
+"": SubResource("AnimationLibrary_t53r8")
+}
+autoplay = "caveman"
+speed_scale = 1.5
+
+[node name="hitbox" parent="." instance=ExtResource("3_gb683")]
+position = Vector2(0, -1)
+collision_mask = 97
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.5, -15)
+shape = SubResource("RectangleShape2D_3acxn")
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("4_a2yw1")
+volume_db = -15.0
+pitch_scale = 0.6
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 0)
+collision_mask = 2
