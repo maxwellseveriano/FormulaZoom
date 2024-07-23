@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cnpgx5k1ewi6a" path="res://prefabs/goal.tscn" id="6_q8fjl"]
 [ext_resource type="Texture2D" uid="uid://ditwj8mclgrnn" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="7_53e54"]
 [ext_resource type="PackedScene" uid="uid://ly1joicxakhf" path="res://actors/character_body_2d.tscn" id="7_lr0l1"]
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://bybfxn5bgt1p7" path="res://assets/Features/parallaxvai.png" id="7_wp8ti"]
+=======
+>>>>>>> 2a54e718576e0eb8b73a99122988867baf36d22c
 [ext_resource type="Shader" path="res://world_01.gdshader" id="9_5lam5"]
 [ext_resource type="Texture2D" uid="uid://hc1u0trqjuro" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="11_dlc5y"]
 [ext_resource type="Texture2D" uid="uid://dheiqaulbqaj0" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="12_mvhnx"]
@@ -323,9 +327,15 @@ motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(432, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+<<<<<<< HEAD
+position = Vector2(-9, -99)
+scale = Vector2(0.129505, 0.1655)
+texture = ExtResource("7_wp8ti")
+=======
 position = Vector2(-2, -21)
 scale = Vector2(1.50347, 1.25481)
 texture = ExtResource("7_53e54")
+>>>>>>> 2a54e718576e0eb8b73a99122988867baf36d22c
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
