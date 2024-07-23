@@ -271,7 +271,7 @@ position = Vector2(4085, 129)
 next_level = "res://levels/world_03.tscn"
 
 [node name="player" parent="." instance=ExtResource("7_sk3pe")]
-position = Vector2(14, 14)
+position = Vector2(10, 4)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -280,7 +280,7 @@ motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(432, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-6, -30)
+position = Vector2(-13, -27)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_mobg1")
 centered = false
@@ -516,6 +516,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -17.0
+offset_right = -9.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_b1y1l")
