@@ -5,9 +5,8 @@ const SPEED = 5000.0
 const JUMP_VELOCITY = -400.0
 
 @onready var wall_detector := $wall_detector as RayCast2D
-@onready var texture := $texture as Sprite2D
+@onready var texture := $sprite as Sprite2D
 @onready var damage_sfx = $player_sounds/damage_sfx as AudioStreamPlayer
-@onready var capacete_vermelho = $CapaceteVermelho as Sprite2D
 
 var direction := -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -24,7 +23,6 @@ func _physics_process(delta):
 		direction *= -1
 		wall_detector.scale.x *= -1
 		texture.flip_h = !texture.flip_h
-		capacete_vermelho.flip_h = !capacete_vermelho.flip_h
 
 	velocity.x = direction * SPEED * delta
 	move_and_slide()

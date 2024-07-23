@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://byqpbwrwjc61a"]
+
+[ext_resource type="Script" path="res://Scripts/roda.gd" id="1_q06rn"]
+[ext_resource type="Texture2D" uid="uid://b3xh33ydpoqqn" path="res://assets/Sprite Pack 2/4 - Tommy/Running (32 x 32).png" id="2_pqcdf"]
+[ext_resource type="Texture2D" uid="uid://dva7uaqo3lpmd" path="res://assets/fontes/capacete_vermelho.png" id="3_38yh3"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="4_rk0ds"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="5_bvt1u"]
+[ext_resource type="PackedScene" uid="uid://c37yy81auxkul" path="res://prefabs/hurbox_enemy.tscn" id="6_1c6st"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afrju"]
+size = Vector2(25, 40)
+
+[sub_resource type="Animation" id="Animation_yu8ke"]
+resource_name = "running"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_pqcdf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_uv3pw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_pqcdf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82n3j"]
+_data = {
+"RESET": SubResource("Animation_uv3pw"),
+"running": SubResource("Animation_yu8ke")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a8rr"]
+size = Vector2(24, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6mfs"]
+size = Vector2(25, 40)
+
+[node name="roda" type="CharacterBody2D" groups=["enemy_roda"]]
+collision_layer = 4
+collision_mask = 67
+script = ExtResource("1_q06rn")
+
+[node name="texture" type="Sprite2D" parent="." groups=["enemy_roda"]]
+texture_filter = 1
+position = Vector2(5.58322, -21.5832)
+scale = Vector2(1.33855, 1.33855)
+texture = ExtResource("2_pqcdf")
+flip_h = true
+hframes = 8
+frame = 1
+
+[node name="CapaceteVermelho" type="Sprite2D" parent="."]
+position = Vector2(7.15625, -28.25)
+scale = Vector2(0.734375, 0.734375)
+texture = ExtResource("3_38yh3")
+flip_h = true
+
+[node name="collision" type="CollisionShape2D" parent="." groups=["enemy_roda"]]
+position = Vector2(7.5, -20)
+shape = SubResource("RectangleShape2D_afrju")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_82n3j")
+}
+autoplay = "running"
+
+[node name="wall_detector" type="RayCast2D" parent="." groups=["enemy_roda"]]
+target_position = Vector2(-11.2, 0)
+collision_mask = 6
+
+[node name="hitbox" parent="." groups=["enemy_roda"] instance=ExtResource("4_rk0ds")]
+position = Vector2(-6, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["enemy_roda"]]
+position = Vector2(13, -51.5)
+shape = SubResource("RectangleShape2D_6a8rr")
+
+[node name="hurbox_enemy" parent="." groups=["enemy_roda"] instance=ExtResource("6_1c6st")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox_enemy" groups=["enemy_roda"]]
+position = Vector2(7.5, -20)
+shape = SubResource("RectangleShape2D_a6mfs")
+debug_color = Color(0.98067, 0.0409745, 0.3422, 0.42)
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("5_bvt1u")
+volume_db = -15.0
+pitch_scale = 0.6

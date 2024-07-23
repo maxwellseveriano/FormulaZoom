@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://e8diq8u0ugce"]
+
+[ext_resource type="Texture2D" uid="uid://duj2i416racnc" path="res://assets/Sprite Pack 2/boss/melancia.png" id="1_dm4ln"]
+[ext_resource type="Script" path="res://Scripts/bomb.gd" id="1_fae43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3db30"]
+radius = 9.0
+
+[node name="bomb" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_fae43")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3db30")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, -2)
+scale = Vector2(0.0100514, 0.0100514)
+texture = ExtResource("1_dm4ln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

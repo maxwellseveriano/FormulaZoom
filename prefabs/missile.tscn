@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlg3anqte4eij"]
+
+[ext_resource type="Texture2D" uid="uid://nkf6xmi7vo4t" path="res://assets/Sprite Pack 2/boss/apple.png" id="1_74i5b"]
+[ext_resource type="Script" path="res://Scripts/missile.gd" id="1_txfb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k73nq"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6acs6"]
+radius = 8.0
+
+[node name="missile" type="AnimatableBody2D"]
+collision_layer = 8
+collision_mask = 3
+sync_to_physics = false
+script = ExtResource("1_txfb7")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k73nq")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_74i5b")
+
+[node name="collision_detection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="collision" type="CollisionShape2D" parent="collision_detection"]
+shape = SubResource("CircleShape2D_6acs6")
+
+[connection signal="body_entered" from="collision_detection" to="." method="_on_collision_detection_body_entered"]
