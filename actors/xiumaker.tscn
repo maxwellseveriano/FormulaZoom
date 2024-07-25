@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://dergbaxw1exm"]
+
+[ext_resource type="Script" path="res://Scripts/Xiumaker.gd" id="1_005m8"]
+[ext_resource type="Texture2D" uid="uid://dw16hudjrsom2" path="res://assets/Sprite Pack 2/4 - Tommy/Walking (32 x 32).png" id="2_oawj4"]
+[ext_resource type="Texture2D" path="res://assets/fontes/capacete_vermelho_X.png" id="3_jd0wg"]
+[ext_resource type="PackedScene" uid="uid://8qdwrtjt1mds" path="res://hitbox.tscn" id="4_yeadp"]
+[ext_resource type="PackedScene" uid="uid://c37yy81auxkul" path="res://prefabs/hurbox_enemy.tscn" id="5_fsoef"]
+[ext_resource type="AudioStream" uid="uid://qmbdq6y2y0xe" path="res://sounds/damage_sound_sfx.wav" id="6_rnerd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i1gd"]
+size = Vector2(26, 37)
+
+[sub_resource type="Animation" id="Animation_06uri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_oawj4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bgo88"]
+resource_name = "boss_runnig"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_oawj4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bqtu"]
+_data = {
+"RESET": SubResource("Animation_06uri"),
+"boss_runnig": SubResource("Animation_bgo88")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0um8"]
+size = Vector2(26, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw7jx"]
+size = Vector2(26, 37)
+
+[node name="Xiumaker" type="CharacterBody2D" groups=["enemy_roda"]]
+collision_layer = 4
+collision_mask = 67
+script = ExtResource("1_005m8")
+
+[node name="texture" type="Sprite2D" parent="." groups=["enemy_roda"]]
+texture_filter = 1
+position = Vector2(-5.91661, -19.9166)
+scale = Vector2(1.25521, 1.25521)
+texture = ExtResource("2_oawj4")
+flip_h = true
+hframes = 6
+
+[node name="CapaceteVermelho_X" type="Sprite2D" parent="."]
+position = Vector2(-7, -26)
+scale = Vector2(0.700195, 0.700195)
+texture = ExtResource("3_jd0wg")
+flip_h = true
+
+[node name="collision" type="CollisionShape2D" parent="." groups=["enemy_roda"]]
+position = Vector2(-7, -18.5)
+shape = SubResource("RectangleShape2D_2i1gd")
+
+[node name="wall_detector" type="RayCast2D" parent="." groups=["enemy_roda"]]
+target_position = Vector2(-23, 0)
+collision_mask = 6
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7bqtu")
+}
+autoplay = "boss_runnig"
+
+[node name="hitbox" parent="." groups=["enemy_roda"] instance=ExtResource("4_yeadp")]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["enemy_roda"]]
+position = Vector2(-7, -17.5)
+shape = SubResource("RectangleShape2D_w0um8")
+
+[node name="hurbox_enemy" parent="." groups=["enemy_roda"] instance=ExtResource("5_fsoef")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox_enemy" groups=["enemy_roda"]]
+position = Vector2(-7, -18.5)
+shape = SubResource("RectangleShape2D_kw7jx")
+debug_color = Color(0.98067, 0.0409745, 0.3422, 0.42)
+
+[node name="player_sounds" type="Node2D" parent="."]
+
+[node name="damage_sfx" type="AudioStreamPlayer" parent="player_sounds"]
+stream = ExtResource("6_rnerd")
+volume_db = -15.0
+pitch_scale = 0.6
